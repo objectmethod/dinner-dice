@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gather Round</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="play-surface" aria-labelledby="brand-title">
+        <header class="top-bar">
+          <div>
+            <p class="eyebrow">Dinner dice for Christian families</p>
+            <h1 id="brand-title">Gather Round</h1>
+          </div>
+          <button class="icon-button" id="settingsToggle" type="button" aria-label="Open settings">
+            <span aria-hidden="true">⚙</span>
+          </button>
+        </header>
+
+        <section class="settings-panel" id="settingsPanel" aria-label="Play settings" hidden>
+          <label class="select-field">
+            <span>Age</span>
+            <select id="ageSelect">
+              <option value="preschool">Preschool</option>
+              <option value="grade" selected>Grade school</option>
+              <option value="middle">Middle school</option>
+              <option value="high">High school</option>
+            </select>
+          </label>
+
+          <fieldset class="segmented-field">
+            <legend>Faith tone</legend>
+            <div class="segment-group" id="toneGroup">
+              <button class="segment" type="button" data-tone="light">Light</button>
+              <button class="segment is-active" type="button" data-tone="clear">Clear</button>
+              <button class="segment" type="button" data-tone="devotional">Devotional</button>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="prompt-card" aria-live="polite">
+          <div class="prompt-meta" id="promptMeta">Roll or choose a side</div>
+          <p class="prompt-text" id="promptText">Tap the side that landed face up.</p>
+          <p class="prompt-helper" id="promptHelper">The person who rolled answers, and family can help when invited.</p>
+        </section>
+
+        <section class="dice-actions" aria-label="Dice controls">
+          <button class="roll-button" id="digitalRollButton" type="button">
+            <span class="die-cube" id="dieCube" aria-hidden="true">
+              <span class="die-icon">✦</span>
+            </span>
+            Roll digital die
+          </button>
+          <button class="secondary-button" id="rerollPromptButton" type="button">New prompt</button>
+        </section>
+
+        <section class="category-grid" aria-label="Dice sides">
+          <button class="category-tile heart" type="button" data-category="heart">
+            <span class="tile-icon" aria-hidden="true">♥</span>
+            <span>Heart</span>
+          </button>
+          <button class="category-tile faith" type="button" data-category="faith">
+            <span class="tile-icon" aria-hidden="true">✝</span>
+            <span>Faith</span>
+          </button>
+          <button class="category-tile family" type="button" data-category="family">
+            <span class="tile-icon" aria-hidden="true">⌂</span>
+            <span>Family</span>
+          </button>
+          <button class="category-tile friends" type="button" data-category="friends">
+            <span class="tile-icon" aria-hidden="true">☻</span>
+            <span>Friends</span>
+          </button>
+          <button class="category-tile tomorrow" type="button" data-category="tomorrow">
+            <span class="tile-icon" aria-hidden="true">↑</span>
+            <span>Tomorrow</span>
+          </button>
+          <button class="category-tile wild" type="button" data-category="wild">
+            <span class="qr-icon" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </span>
+            <span>Wild</span>
+          </button>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
