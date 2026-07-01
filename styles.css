@@ -207,6 +207,19 @@ select {
   line-height: 1.45;
 }
 
+.prompt-lesson {
+  max-width: 720px;
+  margin: 2px 0 0;
+  padding: 14px 16px;
+  border-left: 4px solid var(--faith);
+  border-radius: 12px;
+  color: #314844;
+  background: rgba(45, 138, 116, 0.1);
+  font-size: clamp(0.96rem, 1.8vw, 1.08rem);
+  font-weight: 700;
+  line-height: 1.42;
+}
+
 .dice-actions {
   margin-top: 18px;
   display: grid;

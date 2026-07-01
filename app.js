@@ -202,6 +202,7 @@ const promptBank = [
     tone: "light",
     text: "Close your eyes while someone gives you one mystery bite.",
     helper: "Only use food already on the table, and the roller can say no thanks.",
+    lesson: "Faith tie-in: Trust can feel strange before you know what is coming. Talk about one safe person you trust, and how God invites us to trust him one step at a time.",
   },
   {
     category: "wild",
@@ -209,6 +210,7 @@ const promptBank = [
     tone: "light",
     text: "Act out a scene from a movie or show until someone guesses it.",
     helper: "No words for the first ten seconds.",
+    lesson: "Faith tie-in: Stories are easier to understand when we step into them. Which Bible story would you want to see up close?",
   },
   {
     category: "wild",
@@ -216,6 +218,7 @@ const promptBank = [
     tone: "light",
     text: "Balance the die on your head while you answer this: what food would you eat every day?",
     helper: "Someone can count how long it stays up.",
+    lesson: "Faith tie-in: Self-control grows when we slow down and pay attention. What is one place you can practice self-control tomorrow?",
   },
   {
     category: "wild",
@@ -223,6 +226,7 @@ const promptBank = [
     tone: "light",
     text: "Gently toss the die to someone and give them a ridiculous compliment.",
     helper: "The compliment should be silly and kind.",
+    lesson: "Faith tie-in: Encouragement can surprise someone with grace. Who could use a kind word from you this week?",
   },
   {
     category: "wild",
@@ -230,6 +234,7 @@ const promptBank = [
     tone: "clear",
     text: "Give a one-minute toast to someone at the table.",
     helper: "Make it funny, specific, and kind.",
+    lesson: "Faith tie-in: Honor means naming the good God is growing in someone. What good thing do you see in them?",
   },
   {
     category: "wild",
@@ -237,6 +242,7 @@ const promptBank = [
     tone: "devotional",
     text: "Make up a ten-second family blessing song.",
     helper: "You can choose one person to provide percussion on the table.",
+    lesson: "Faith tie-in: Blessing is a way to speak hope over someone. What good thing can our family ask God for tonight?",
   },
 ];
 
@@ -248,6 +254,7 @@ const elements = {
   promptMeta: document.querySelector("#promptMeta"),
   promptText: document.querySelector("#promptText"),
   promptHelper: document.querySelector("#promptHelper"),
+  promptLesson: document.querySelector("#promptLesson"),
   digitalRollButton: document.querySelector("#digitalRollButton"),
   rerollPromptButton: document.querySelector("#rerollPromptButton"),
   dieCube: document.querySelector("#dieCube"),
@@ -308,6 +315,8 @@ function showPrompt(category) {
   elements.promptMeta.textContent = `${categoryConfig.label} · ${formatAge(selectedAge)} · ${formatTone(selectedTone)}`;
   elements.promptText.textContent = prompt.text;
   elements.promptHelper.textContent = prompt.helper;
+  elements.promptLesson.textContent = prompt.lesson || "";
+  elements.promptLesson.hidden = !prompt.lesson;
   elements.dieIcon.textContent = categoryConfig.icon;
 }
 
