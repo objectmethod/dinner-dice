@@ -1,72 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gather Round</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <section class="play-surface" aria-labelledby="brand-title">
-        <header class="top-bar">
-          <div>
-            <p class="eyebrow">Dinner dice for Christian families</p>
-            <h1 id="brand-title">Gather Round</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gather Round — dinner dice for Christian families">
+  <title>Gather Round</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-face="tomorrow" data-rolling="false">
+  <main class="app" id="app">
+
+    <header class="topbar">
+      <span class="wordmark">Gather Round</span>
+      <span class="tagline">Dinner Dice</span>
+    </header>
+
+    <section class="stage">
+      <div class="die-zone">
+        <div class="die-scene">
+          <div class="die" id="die">
+            <div class="face face-heart"><span>&hearts;</span></div>
+            <div class="face face-faith"><span>&#10013;</span></div>
+            <div class="face face-family"><span>&#8962;</span></div>
+            <div class="face face-friends"><span>&#9787;</span></div>
+            <div class="face face-tomorrow"><span>&uarr;</span></div>
+            <div class="face face-wild"><span>&#9638;</span></div>
           </div>
-        </header>
+        </div>
+      </div>
+      <div class="card-zone">
+        <article class="prompt-card" id="promptCard">
+          <span class="chip" id="chip" data-cat="tomorrow"><span id="chipGlyph"></span>&nbsp;<span id="chipLabel"></span></span>
+          <p class="question" id="question"></p>
+          <p class="helper" id="helper"></p>
+          <p class="lesson" id="lesson" hidden></p>
+        </article>
+      </div>
+    </section>
 
-        <section class="prompt-card" aria-live="polite">
-          <div class="prompt-meta" id="promptMeta">Roll or choose a side</div>
-          <p class="prompt-text" id="promptText">Tap the side that landed face up.</p>
-          <p class="prompt-helper" id="promptHelper">The person who rolled answers, and family can help when invited.</p>
-          <p class="prompt-lesson" id="promptLesson" hidden></p>
-        </section>
+    <footer class="sides">
+      <p class="hint">tap anywhere to roll &middot; rolled the real die? tap its side</p>
+      <div class="side-buttons">
+        <button class="side" data-cat="heart" aria-label="Heart"><span>&hearts;</span></button>
+        <button class="side" data-cat="faith" aria-label="Faith"><span>&#10013;</span></button>
+        <button class="side" data-cat="family" aria-label="Family"><span>&#8962;</span></button>
+        <button class="side" data-cat="friends" aria-label="Friends"><span>&#9787;</span></button>
+        <button class="side" data-cat="tomorrow" aria-label="Tomorrow"><span>&uarr;</span></button>
+        <button class="side" data-cat="wild" aria-label="Wild"><span>&#9638;</span></button>
+      </div>
+    </footer>
 
-        <section class="dice-actions" aria-label="Dice controls">
-          <button class="roll-button" id="digitalRollButton" type="button">
-            <span class="die-cube" id="dieCube" aria-hidden="true">
-              <span class="die-icon">✦</span>
-            </span>
-            Roll digital die
-          </button>
-          <button class="secondary-button" id="rerollPromptButton" type="button">New prompt</button>
-        </section>
-
-        <section class="category-grid" aria-label="Dice sides">
-          <button class="category-tile heart" type="button" data-category="heart">
-            <span class="tile-icon" aria-hidden="true">♥</span>
-            <span>Heart</span>
-          </button>
-          <button class="category-tile faith" type="button" data-category="faith">
-            <span class="tile-icon" aria-hidden="true">✝</span>
-            <span>Faith</span>
-          </button>
-          <button class="category-tile family" type="button" data-category="family">
-            <span class="tile-icon" aria-hidden="true">⌂</span>
-            <span>Family</span>
-          </button>
-          <button class="category-tile friends" type="button" data-category="friends">
-            <span class="tile-icon" aria-hidden="true">☻</span>
-            <span>Friends</span>
-          </button>
-          <button class="category-tile tomorrow" type="button" data-category="tomorrow">
-            <span class="tile-icon" aria-hidden="true">↑</span>
-            <span>Tomorrow</span>
-          </button>
-          <button class="category-tile wild" type="button" data-category="wild">
-            <span class="qr-icon" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </span>
-            <span>Wild</span>
-          </button>
-        </section>
-      </section>
-    </main>
-
-    <script src="app.js"></script>
-  </body>
+  </main>
+  <script src="app.js"></script>
+</body>
 </html>
