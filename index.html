@@ -3,37 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Gather Round — dinner dice for Christian families">
-  <title>Gather Round</title>
+  <meta name="description" content="Dinner Dice — weekly Catholic conversation starters for families">
+  <title>Dinner Dice | Family Meal Moments</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body data-face="tomorrow" data-rolling="false">
+<body data-face="go" data-rolling="false">
   <main class="app" id="app">
 
     <header class="topbar">
-      <span class="wordmark">Gather Round</span>
+      <span class="wordmark">Family Meal Moments</span>
       <span class="tagline">Dinner Dice</span>
     </header>
 
+    <section class="week-banner" aria-labelledby="weekTheme">
+      <div class="week-copy">
+        <span class="week-kicker">This week</span>
+        <h1 id="weekTheme"></h1>
+        <p id="weekSummary"></p>
+      </div>
+      <a class="readings-link" id="readingsLink" href="#" target="_blank" rel="noopener">Readings <span aria-hidden="true">↗</span></a>
+    </section>
+
     <section class="stage">
-      <div class="die-zone">
+      <button class="die-zone" id="dieZone" type="button" aria-label="Roll the Dinner Dice">
         <div class="die-scene">
           <div class="die" id="die">
             <div class="face face-heart"><span>&hearts;</span></div>
             <div class="face face-faith"><span>&#10013;</span></div>
             <div class="face face-family"><span>&#8962;</span></div>
             <div class="face face-friends"><span>&#9787;</span></div>
-            <div class="face face-tomorrow"><span>&uarr;</span></div>
+            <div class="face face-go"><span>&uarr;</span></div>
             <div class="face face-wild"><span>&#9638;</span></div>
           </div>
         </div>
-      </div>
+      </button>
       <div class="card-zone">
         <article class="prompt-card" id="promptCard">
-          <span class="chip" id="chip" data-cat="tomorrow"><span id="chipGlyph"></span>&nbsp;<span id="chipLabel"></span></span>
+          <span class="chip" id="chip" data-cat="go"><span id="chipGlyph"></span>&nbsp;<span id="chipLabel"></span></span>
           <p class="question" id="question"></p>
           <p class="helper" id="helper"></p>
           <p class="lesson" id="lesson" hidden></p>
@@ -42,18 +51,19 @@
     </section>
 
     <footer class="sides">
-      <p class="hint">tap anywhere to roll &middot; rolled the real die? tap its side</p>
+      <p class="hint">tap the die to roll &middot; tap a category for another question</p>
       <div class="side-buttons">
-        <button class="side" data-cat="heart" aria-label="Heart"><span>&hearts;</span></button>
-        <button class="side" data-cat="faith" aria-label="Faith"><span>&#10013;</span></button>
-        <button class="side" data-cat="family" aria-label="Family"><span>&#8962;</span></button>
-        <button class="side" data-cat="friends" aria-label="Friends"><span>&#9787;</span></button>
-        <button class="side" data-cat="tomorrow" aria-label="Tomorrow"><span>&uarr;</span></button>
-        <button class="side" data-cat="wild" aria-label="Wild"><span>&#9638;</span></button>
+        <button class="side" data-cat="heart" aria-label="Heart: feelings, gratitude, fears, and hopes" title="Heart"><span>&hearts;</span></button>
+        <button class="side" data-cat="faith" aria-label="Faith: God, prayer, Scripture, and Catholic life" title="Faith"><span>&#10013;</span></button>
+        <button class="side" data-cat="family" aria-label="Family: life at home, helping, and forgiveness" title="Family"><span>&#8962;</span></button>
+        <button class="side" data-cat="friends" aria-label="Friends: friendship, school, inclusion, and kindness" title="Friends"><span>&#9787;</span></button>
+        <button class="side" data-cat="go" aria-label="Go: one action inspired by this week's message" title="Go!"><span>&uarr;</span></button>
+        <button class="side" data-cat="wild" aria-label="Wild: movement, imagination, laughter, and play" title="Wild"><span>&#9638;</span></button>
       </div>
     </footer>
 
   </main>
+  <script src="content.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
