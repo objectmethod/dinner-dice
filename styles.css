@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   Gather Round — theme
+   Dinner Dice — theme
    Every color, font, radius and timing lives here. Swap this
    file (or just this :root block) to re-theme the entire app.
    The JS never sets colors — it only flips data-attributes.
@@ -14,8 +14,8 @@
   --cat-family-deep:   #178F63;
   --cat-friends:       #F97634;
   --cat-friends-deep:  #CC5A1F;
-  --cat-tomorrow:      #38A6E3;
-  --cat-tomorrow-deep: #2380B5;
+  --cat-go:            #38A6E3;
+  --cat-go-deep:       #2380B5;
   --cat-wild:          #8B5CF6;
   --cat-wild-deep:     #6D42D8;
 
@@ -58,17 +58,16 @@ body[data-face="heart"]    { background: var(--cat-heart-deep); }
 body[data-face="faith"]    { background: var(--cat-faith-deep); }
 body[data-face="family"]   { background: var(--cat-family-deep); }
 body[data-face="friends"]  { background: var(--cat-friends-deep); }
-body[data-face="tomorrow"] { background: var(--cat-tomorrow-deep); }
+body[data-face="go"]       { background: var(--cat-go-deep); }
 body[data-face="wild"]     { background: var(--cat-wild-deep); }
 
 .app {
   max-width: 480px;
   margin: 0 auto;
-  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   padding: calc(18px + env(safe-area-inset-top)) 28px calc(24px + env(safe-area-inset-bottom));
-  cursor: pointer;
 }
 
 /* ── Header ───────────────────────────────────────────────── */
@@ -88,6 +87,55 @@ body[data-face="wild"]     { background: var(--cat-wild-deep); }
   color: var(--on-color-soft);
 }
 
+/* ── Weekly theme ─────────────────────────────────────────── */
+.week-banner {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--on-color);
+}
+.week-copy {
+  min-width: 0;
+  flex: 1;
+}
+.week-kicker {
+  display: block;
+  margin-bottom: 2px;
+  font: 900 9px/1 var(--font-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-color-soft);
+}
+.week-banner h1 {
+  margin: 0;
+  font: 600 17px/1.15 var(--font-display);
+}
+.week-banner p {
+  margin: 4px 0 0;
+  font: 600 11px/1.3 var(--font-body);
+  color: var(--on-color-soft);
+}
+.readings-link {
+  flex: none;
+  padding: 7px 9px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.13);
+  color: var(--on-color);
+  font: 800 10px/1 var(--font-body);
+  text-decoration: none;
+}
+.readings-link:focus-visible,
+.die-zone:focus-visible,
+.side:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+
 /* ── Stage: two equal halves ──────────────────────────────── */
 .stage {
   flex: 1;
@@ -97,9 +145,16 @@ body[data-face="wild"]     { background: var(--cat-wild-deep); }
 }
 .die-zone {
   flex: 1;
+  width: 100%;
+  min-height: calc(var(--die-size) + 34px);
+  padding: 0;
+  border: 0;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 .card-zone {
   flex: 1;
@@ -140,7 +195,7 @@ body[data-rolling="true"] .die { transition-duration: var(--roll-duration); }
 .face-faith    { background: var(--cat-faith);    transform: rotateY(90deg)  translateZ(calc(var(--die-size) / 2)); }
 .face-family   { background: var(--cat-family);   transform: rotateY(180deg) translateZ(calc(var(--die-size) / 2)); }
 .face-friends  { background: var(--cat-friends);  transform: rotateY(270deg) translateZ(calc(var(--die-size) / 2)); }
-.face-tomorrow { background: var(--cat-tomorrow); transform: rotateX(90deg)  translateZ(calc(var(--die-size) / 2)); }
+.face-go       { background: var(--cat-go);       transform: rotateX(90deg)  translateZ(calc(var(--die-size) / 2)); }
 .face-wild     { background: var(--cat-wild);     transform: rotateX(270deg) translateZ(calc(var(--die-size) / 2)); }
 
 /* ── Prompt card ──────────────────────────────────────────── */
@@ -171,7 +226,7 @@ body[data-rolling="true"] .prompt-card { opacity: 0.25; }
 .chip[data-cat="faith"]    { background: var(--cat-faith); }
 .chip[data-cat="family"]   { background: var(--cat-family); }
 .chip[data-cat="friends"]  { background: var(--cat-friends); }
-.chip[data-cat="tomorrow"] { background: var(--cat-tomorrow); }
+.chip[data-cat="go"]       { background: var(--cat-go); }
 .chip[data-cat="wild"]     { background: var(--cat-wild); }
 
 .question {
@@ -201,7 +256,7 @@ body[data-rolling="true"] .prompt-card { opacity: 0.25; }
 }
 .prompt-card.pop { animation: pop 0.35s ease-out; }
 
-/* ── Footer: hint + physical-die side buttons ─────────────── */
+/* ── Footer: hint + category shortcuts ───────────────────── */
 .sides {
   display: flex;
   flex-direction: column;
@@ -234,6 +289,16 @@ body[data-rolling="true"] .prompt-card { opacity: 0.25; }
   transition: transform 0.1s;
 }
 .side:active { transform: scale(0.9); }
+
+@media (max-height: 740px) {
+  :root { --die-size: 108px; }
+  .app { padding-top: calc(12px + env(safe-area-inset-top)); }
+  .week-banner { margin-top: 10px; padding: 9px 12px; }
+  .week-banner p { display: none; }
+  .prompt-card { padding: 18px 20px 17px; gap: 9px; }
+  .question { font-size: 21px; }
+  .sides { margin-top: 10px; gap: 9px; }
+}
 
 /* ── Accessibility ────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
