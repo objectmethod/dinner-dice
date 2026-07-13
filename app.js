@@ -145,22 +145,8 @@ function roll() {
   setTimeout(() => land(landCat), cssSeconds('--roll-duration', 1.2) * 1000 + 150);
 }
 
-// Tap a category button: turn to that category and show another question.
-function turnTo(cat) {
-  if (state.rolling) return;
-  state.face = cat;
-  setDieTransform(cat);
-  setTimeout(() => land(cat), cssSeconds('--turn-duration', 0.5) * 1000 + 50);
-}
-
 // ── Wire up ─────────────────────────────────────────────────
 dieZone.addEventListener('click', roll);
-document.querySelectorAll('.side').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    turnTo(btn.dataset.cat);
-  });
-});
 
 // ── Init: random face, no animation on first paint ──────────
 (function init() {
