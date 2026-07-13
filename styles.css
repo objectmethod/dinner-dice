@@ -130,8 +130,7 @@ body[data-face="wild"]     { background: var(--cat-wild-deep); }
   text-decoration: none;
 }
 .readings-link:focus-visible,
-.die-zone:focus-visible,
-.side:focus-visible {
+.die-zone:focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.8);
   outline-offset: 3px;
 }
@@ -256,12 +255,9 @@ body[data-rolling="true"] .prompt-card { opacity: 0.25; }
 }
 .prompt-card.pop { animation: pop 0.35s ease-out; }
 
-/* ── Footer: hint + category shortcuts ───────────────────── */
-.sides {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 14px;
+/* ── Footer: roll hint ───────────────────────────────────── */
+.footer {
+  margin-top: 10px;
 }
 .hint {
   margin: 0;
@@ -269,26 +265,6 @@ body[data-rolling="true"] .prompt-card { opacity: 0.25; }
   text-align: center;
   color: var(--on-color-soft);
 }
-.side-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.side {
-  border: none;
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--on-color-faint);
-  color: #FFFFFF;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.1s;
-}
-.side:active { transform: scale(0.9); }
 
 @media (max-height: 740px) {
   :root { --die-size: 108px; }
@@ -297,7 +273,7 @@ body[data-rolling="true"] .prompt-card { opacity: 0.25; }
   .week-banner p { display: none; }
   .prompt-card { padding: 18px 20px 17px; gap: 9px; }
   .question { font-size: 21px; }
-  .sides { margin-top: 10px; gap: 9px; }
+  .footer { margin-top: 8px; }
 }
 
 /* ── Accessibility ────────────────────────────────────────── */
